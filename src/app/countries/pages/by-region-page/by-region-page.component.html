@@ -1,0 +1,11 @@
+<h1>By Region</h1>
+<div class="row">
+  <app-search-box [placeholder]="placeholder" (valueSearchEvent)="searchRegion($event)"
+    (isTouchedEvent)="onIsTouched()"></app-search-box>
+</div>
+
+@if (isTouchedInputSearch) {
+<div class="row">
+  <app-country-list [countries]="countries" [hasPermittedChars]="hasPermittedChars"></app-country-list>
+</div>
+}

@@ -1,0 +1,12 @@
+<h1>By Capital</h1>
+
+<div class="row">
+  <app-search-box [placeholder]="placeholder" (valueSearchEvent)="searchCapital($event)"
+    (isTouchedEvent)="onIsTouched()"></app-search-box>
+</div>
+
+@if (isTouchedInputSearch) {
+<div class="row">
+  <app-country-list [countries]="countries" [hasPermittedChars]="hasPermittedChars"></app-country-list>
+</div>
+}

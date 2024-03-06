@@ -1,7 +1,6 @@
 <h1>By Region</h1>
 <div class="row">
-  <app-search-box [placeholder]="placeholder" (valueSearchEvent)="searchRegion($event)"
-    (isTouchedEvent)="onIsTouched()"></app-search-box>
+<app-nav-bar [navBarNames]="navBarOptions" (emitRegionEvent)="searchRegion($event)"></app-nav-bar>
 </div>
 
 @if (isTouchedInputSearch) {

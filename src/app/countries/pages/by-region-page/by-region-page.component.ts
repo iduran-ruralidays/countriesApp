@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country.interface';
+import { Regions } from '../../interfaces/navBarTypes.interface';
 
 @Component({
   selector: 'app-by-region-page',
@@ -9,30 +10,23 @@ import { Country } from '../../interfaces/country.interface';
 })
 export class ByRegionPageComponent {
 
+  public navBarOptions: Regions[] = ['Europe','America','Africa','Oceania','Asia'];
+
   public placeholder: string = 'Insert country...';
 
   private countriesService: CountriesService = inject(CountriesService);
 
   public countries: Country[] = [];
 
-  public hasPermittedChars = false;
+  public hasPermittedChars = true;
 
   public isTouchedInputSearch: boolean = false;
 
   searchRegion(value: string): void {
-    this.hasPermittedChars = true;
-
-    if (value.length >= 0 && value.length < 3) {
-      this.countries = [];
-      this.hasPermittedChars = false;
-      return;
-    }
-
-    this.countriesService.getApiCountries(value, 'region')
-      .subscribe(countries => this.countries = countries)
-  }
-
-  onIsTouched() {
+    
     this.isTouchedInputSearch = true;
+    this.countriesService.getApiCountries(value, 'region')
+      .subscribe(countries => {this.countries = countries})
   }
+
 }
